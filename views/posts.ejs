@@ -1,0 +1,28 @@
+<%- include('./partials/header') %>
+
+<div class="page-one">
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <div class="container-fluid">
+            <a href="/" class="navbar-brand mb-0 h1">Bloggo</a>
+            <div class="link-div d-flex">
+                <a class="nav-link mx-2" href="/">Home</a>
+                <a class="nav-link mx-2" href="/contact">Contact Us</a>
+                <a class="nav-link mx-2" href="/about">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="diary">
+        <div class="title text-center mt-4">
+            <h3><%= title %></h3>
+            <div class="dash mx-auto pt-4"></div>
+            <div class="text-center p-4">
+                <p><%= post %></p>
+            </div>
+            <button class="btn btn-outline-secondary"><a href="/">Go Back</a></button>
+        </div>
+    </div>
+</div>
+
+<%- include('./partials/footer') %>

@@ -1,0 +1,50 @@
+<%- include('./partials/header') %>
+
+    <div class="page-one mb-5">
+        <!-- Navigation bar -->
+        <nav class="navbar">
+            <div class="container-fluid">
+                <a href="/" class="navbar-brand mb-0 h1">Bloggo</a>
+                <div class="link-div d-flex">
+                    <a class="nav-link mx-2" href="/">Home</a>
+                    <a class="nav-link mx-2" href="/contact">Contact Us</a>
+                    <a class="nav-link mx-2" href="/about">About</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Front Page -->
+         <div class="front-page row">
+             <div class="front-image col">
+                <img src="./images/Diaryy.png" alt="">
+             </div>
+             <div class="front-text col my-auto text-center pt-5">
+                <h1>Life Unscripted.</h1>
+                <h3>The diary of a dreamer.</h3>
+                <div class="btns mt-4">
+                    <button class="mx-2"><a href="/compose">Compose</a></button>
+                    <button class="mx-2"><a href="#2page">Journals</a></button>
+                </div>
+             </div>
+         </div>
+    </div>
+
+    <!-- Second Page -->
+    <div class="second-page mb-5" id="2page">
+        <div class="title text-center">
+            <h3>Latest Journals</h3>
+            <div class="dash mx-auto pt-4"></div>
+        </div>
+        <div id="journal" class="journals text-center mt-4 pt-3">
+            <% for (let i = 0; i < array.length; i++) { %>
+                <a href="/posts/<%= array[i].title %>">
+                    <div class="jrnl">
+                        <h2><%= array[i].title %></h2>
+                        <p><%= array[i].post %></p>
+                    </div>
+                </a>
+            <% } %>
+        </div>
+    </div>
+
+<%- include('./partials/footer') %>

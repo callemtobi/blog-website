@@ -1,0 +1,267 @@
+/* Navigation Bar */
+.page-one {
+    width: 100%;
+    height: 100vh;
+    /* background-color: aquamarine; */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container-fluid {
+    padding: 1% 13% 0;
+}
+/* .navbar {
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+} */
+
+/* --------------------------------- Front Page */
+.front-page {
+    margin: 0 13% 0;
+}
+.front-page a {
+    text-decoration: none;
+    color: inherit;
+}
+.front-text {
+    position: relative;
+    color: #4e5753;
+}
+.front-text h1 {
+    font-size: 3rem;
+    font-weight: bolder;
+}
+.front-text h3 {
+    margin-top: -0.5rem;
+    font-weight: lighter;
+    font-size: 1.3rem;
+}
+.front-text .btns button {
+    width: 10rem;
+    padding: 0.5rem 0;
+    border: 1px solid #4e5753;
+    background-color: transparent;
+}
+.front-text .btns button:nth-of-type(2) {
+    background-color: green;
+    color: white;
+}
+.front-text .btns button:hover {
+    background-color: green;
+    transition: 500ms ease-in-out;
+    color: white;
+}
+.front-text::before {
+    content: "A";
+    position: absolute;
+    bottom: -15rem;
+    right: 3rem;
+    font-size: 30rem;
+    color: gray;
+    z-index: -1;
+    opacity: 0.5;
+}
+.front-image {
+    position: relative;
+}
+.front-image img {
+    height: 500px;
+}
+.front-image::before {
+    content: "My Story, My Way.";
+    position: absolute;
+    top: 6.2rem;
+    left: 23rem;
+    transform: rotate(42deg);
+    opacity: 0.8;
+    z-index: -1;
+}
+
+/* ---------------------------------------- Second Page */
+.second-page {
+    width: 100%;
+    height: auto;
+    padding: 5% 13% 2%;
+    /* border: 1px solid red; */
+}
+.title h3 {
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.5);
+    /* border: 1px solid red; */
+}
+.dash {
+    width: 3rem;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.5);
+}
+.journals {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    /* border: 1px solid red; */
+    height: auto;
+}
+.journals a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+.journals .jrnl:nth-child(1) {
+    background-image: url("../images/bg.jpg");
+}
+.journals .jrnl:nth-child(2) {
+    background-image: url("../images/bg5.jpg");
+}
+.journals .jrnl:nth-child(3) {
+    background-image: url("../images/bg3.jpg");
+}
+.journals .jrnl:nth-child(4) {
+    background-image: url("../images/bg4.jpg");
+}
+.jrnl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 10rem;
+    width: 100%;
+    padding-top: 1rem;
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+    box-shadow:  5px 5px 10px rgba(0, 0, 0, 0.5);
+    transition: all 400ms ease-in-out;
+}
+.jrnl:hover {
+    filter: brightness(1.1);
+    transform: translateY(-4px);
+    /* padding-top: 1rem; */
+}
+.jrnl p {
+    visibility: hidden;
+    opacity: 0;
+    /* display: none; */
+    /* display: -webkit-box; */
+    /* -webkit-line-clamp: 2; */
+    /* -webkit-box-orient: vertical; */
+    overflow: hidden;
+    /* text-overflow: ellipsis;  */
+    width: 85%;
+    height: 5.6rem;
+    transition: all 400ms ease-in-out;
+}
+.jrnl:hover p {
+    visibility: visible;
+    opacity: 1;
+    /* display: block; */
+}
+.jrnl h2 {
+    transition: all 400ms ease-out;
+    padding-top: 2.6rem;  
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: rgba(0, 0, 0, 0.5);
+}
+.jrnl:hover h2 {
+    padding-top: 0.3rem;
+}
+
+/* -------- Footer */
+footer {
+    height: 10rem;
+    margin: 7% 1% 0;
+    background-color: #4e5753;
+    border-radius: 2rem 2rem 0 0;
+}
+
+/* -------------------------- About */
+.about {
+    height: 90%;
+    margin-top: 2rem;
+    padding: 0 13% 0;
+}
+.about-us {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 4rem;
+}
+.about-us .img {
+    margin: 0 auto 0;
+    height: 19rem;
+    width: 70%;
+    border: 1px solid red;
+    border-radius: 3rem 3rem 0 0;
+    /* overflow: hidden; */
+    /* background-image: url("../images/about\ us.jpg"); */
+    background-position: center;
+    background-size: cover;
+}
+.about-us .message::before {
+    /* content: "About Us"; */
+    position: absolute;
+    top: -3rem;
+    left: 21rem;
+    font-size: 7rem;
+    font-weight: bolder;
+    color: rgba(0, 0, 0, 1);
+    opacity: 0.5;
+}
+.about .message {
+    padding-top: 25%;
+}
+textarea {
+    resize: none;
+}
+
+/* ------------------------- POST */
+.diary {
+    margin: 3% 13% 0;
+    /* height: fit-content; */
+    /* padding-bottom: 5rem; */
+}
+.diary a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* ---------------------------- COMPOSE */
+.input-tags {
+    margin: 3% 13% 0;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    column-gap: 2rem;
+}
+.compose .publish {
+    position: relative;
+}
+.publish textarea {
+    border-radius: 1rem !important; 
+    /* border: 1px solid rgba(0, 0, 0, 0.5) !important; */
+}
+.publish button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    height: 3rem;
+    border-radius: 1rem 0 1rem 0;
+    box-shadow: inset 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+@media (min-width: 350px) and (max-width: 900px) {
+    .front-image img {
+        height: 350px;
+    }
+    /* Second Page */
+    .second-page {
+        padding: 5% 10% 2%;
+        /* padding: 0; */
+    }
+    .journals {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
