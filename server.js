@@ -1,4 +1,6 @@
 import express from 'express';
+import _ from 'lodash';
+// const _ = require('lodash');
 
 const app = express();
 const PORT = 8000;
@@ -10,8 +12,12 @@ app.set('view engine', 'ejs');
 // Containers
 const titles = [
     {
-        title: "Neymar",
-        post: "Ney the great."
+        title: "Testing",
+        post: "My first day at school was one to remember."
+    },
+    {
+        title: "Testing 2",
+        post: "My first day at school was one to remember."
     }
 ];
 
@@ -20,21 +26,21 @@ app.get('/', (req, res) => {
     const postData = {
         post: titles
     }
-    console.log(postData.post)
-    res.render('index', {array:titles});
+    // console.log(postData.post)
+    res.render('index', {array: titles});
     
     // res.render('index', {intro: data.intro.substring(0, 150)+'...', title: data.title});
 })
-app.get('/posts/:id', (req, res) => {
-    const postData = {
-        post: titles
-    }
-    let id = req.params.id;
-    let findingPostTitle = post;
-    let post = postData.post[0].post;
+app.get('/posts/:postName', (req, res) => {
+    let postName = _.lowerCase(req.params.postName);
+    titles.forEach((title) => {
+        const storedTitle = _.lowerCase(title.title);
 
-    // res.render('posts', { title:  postData.post[0].title});
-    res.render('posts', { title: id, post: post});
+        if (storedTitle === postName) {
+            res.render('posts', { title: title.title, post: title.post});
+        }
+    })
+
 })
 app.get('/about', (req, res) => {
     const title = "Abou This Website";
@@ -81,8 +87,7 @@ app.route('/compose')
             title: body.compose_title,
             post: body.compose_post
         }
-        // titles.push(createObject(userData.title, userData.intro));
-        if (userData.title === '') {
+        if (userData.title === '' || userData.post === '') {
             res.redirect('/');
         } else {
             titles.push(userData);
