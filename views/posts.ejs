@@ -17,8 +17,22 @@
         <div class="title text-center mt-4">
             <h3><%= title %></h3>
             <div class="dash mx-auto pt-4"></div>
+            <div class="dots-container">
+                <button class="dot-btn" id="option-btn">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </button>
+                <form action="/delete" method="POST">
+                    <div class="drop-menu" id="drop-menu">
+                        <input type="hidden" name="blogID" value="<%= blogId %>">
+                         <button class="menu-item" type="submit">Delete</button>
+                         <button class="menu-item" type="button">Edit</button>
+                    </div>
+                </form>
+            </div>
             <div class="text-center p-4">
-                <p><%= post %></p>
+                <p><%= desc %></p>
             </div>
             <button class="btn btn-outline-secondary"><a href="/">Go Back</a></button>
         </div>

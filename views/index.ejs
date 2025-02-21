@@ -38,9 +38,9 @@
         <div id="journal" class="journals text-center mt-4 pt-3">
             <% for (let i = 0; i < array.length; i++) { %>
                 <a href="/posts/<%= array[i].title %>">
-                    <div class="jrnl">
+                    <div class="jrnl" style="background-image: url('<%= bgImageURL %>');">
                         <h2><%= array[i].title %></h2>
-                        <p><%= array[i].post.substring(0,100)+'...' %></p>
+                        <p><%= array[i].desc.substring(0,100)+'...' %></p>
                     </div>
                 </a>
             <% } %>

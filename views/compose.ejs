@@ -18,11 +18,16 @@
             <h3>Freeze Your Thoughts</h3>
             <div class="dash mx-auto pt-4"></div>
         </div>
-        <form action="/compose" method="post">
+        <form action="/compose" method="post" enctype="multipart/form-data">
             <div class="input-tags">
                 <div class="img">
-                    <div class="input-group">
+                    <div class="input-group mb-2">
                         <input type="text" name="compose_title" class="form-control" placeholder="Title">
+                    </div>
+                    <div id="imagePreview" class="image-filler" style="background-image: url(./images/bg4.jpg);">
+                    </div>
+                    <div class="input-group my-2">
+                        <input id="imageInput" type="file" class="form-control" name="backgroundImage" accept="image/*">
                     </div>
                 </div>
                 <div class="publish">
