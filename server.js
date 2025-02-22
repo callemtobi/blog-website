@@ -2,6 +2,7 @@ import express from 'express';
 import _ from 'lodash';
 import multer from 'multer';
 import mongoose from 'mongoose';
+import notifier from 'node-notifier';
 // const _ = require('lodash');
 
 const app = express();
@@ -21,24 +22,11 @@ mongoose.connection.once('open', () => {
 
 const blogSchema = new mongoose.Schema({
     title: String,
-    desc: String
-    // Imgfilename: String,
-    // img: { data: Buffer, contentType: String }
+    desc: String,
+    Imgfilename: String,
+    img: { data: Buffer, contentType: String }
 })
 const Blog = new mongoose.model('Blog', blogSchema);
-
-// Node Notifier
-notifier.notify(
-    {
-      title: 'My awesome title',
-      message: 'Hello from node, Mr. User!',
-      sound: true, // Only Notification Center or Windows Toasters
-      wait: true // Wait with callback, until user action is taken against notification, does not apply to Windows Toasters as they always wait or notify-send as it does not support the wait option
-    },
-    function (error, response, metadata) {
-        console.log(response, metadata);
-    }
-)
 
 // Containers
 const titles = [
@@ -148,9 +136,9 @@ app.route('/compose')
 
         const newBlog = new Blog({
             title: body.compose_title,
-            desc: body.compose_post
-            // Imgfilename: req.file.filename,
-            // img: { data: req.file.buffer, contentType: req.file.mimetype }
+            desc: body.compose_post,
+            Imgfilename: req.file.filename,
+            img: { data: req.file.buffer, contentType: req.file.mimetype }
         })
 
 
@@ -158,6 +146,15 @@ app.route('/compose')
         .then((blogData) => {
             console.log('Data uploaded! -> ' + blogData); 
             // newBlog.save(); mongoose.connection.close()
+            notifier.notify({
+                title: 'Bloggo',
+                message: 'Your blog has been uploaded!',
+                icon: './public/images/upload.jpg',
+                sound: false, // Only Notification Center or Windows Toasters
+                wait: true, // Wait with callback, until user action is taken against notification, does not apply to Windows Toasters as they always wait or notify-send as it does not support the wait option
+                actions: ['Thank You!']
+            }
+            )
             res.redirect('/');
         })
         .catch(err => {console.log('Error: ' + err.message)})
@@ -186,7 +183,16 @@ app.post('/delete', (req, res) => {
     const blogID = req.body.blogID;
 
     Blog.findOneAndDelete({_id: blogID })
-    .then((blog) => {console.log('Deleted!'); res.redirect('/');})
+    .then((blog) => {console.log('Deleted!');
+        notifier.notify({
+            title: 'Bloggo - Delete Request',
+            message: 'Your blog has been deleted!',
+            icon: './public/images/delete.jpg',
+            sound: false, // Only Notification Center or Windows Toasters
+            timeout: 2,
+            }
+        )
+        res.redirect('/');})
     .catch((err) => {console.log(`Error: ${err}`); })
 })
 
