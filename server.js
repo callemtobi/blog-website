@@ -3,6 +3,7 @@ import _ from 'lodash';
 import multer from 'multer';
 import mongoose from 'mongoose';
 import notifier from 'node-notifier';
+import fs from 'fs';
 // const _ = require('lodash');
 
 const app = express();
@@ -32,11 +33,16 @@ const Blog = new mongoose.model('Blog', blogSchema);
 const titles = [
     {
         title: "My First Day at School",
-        desc: "My trip to the Himalayas was an unforgettable adventure. As we drove through winding roads, the majestic peaks loomed ahead, their snow-capped summits glistening in the sunlight. Each day was filled with breathtaking hikes, where I marveled at the lush valleys and crystal-clear rivers. The air was crisp and invigorating, and the serenity of the mountains provided a perfect escape from city life. I also had the chance to interact with local villagers, who shared their rich culture and traditions. This journey not only rejuvenated my spirit but also deepened my appreciation for nature's beauty."
+        desc: "My trip to the Himalayas was an unforgettable adventure. As we drove through winding roads, the majestic peaks loomed ahead, their snow-capped summits glistening in the sunlight. Each day was filled with breathtaking hikes, where I marveled at the lush valleys and crystal-clear rivers. The air was crisp and invigorating, and the serenity of the mountains provided a perfect escape from city life. I also had the chance to interact with local villagers, who shared their rich culture and traditions. This journey not only rejuvenated my spirit but also deepened my appreciation for nature's beauty.",
+        Imgfilename: 'School.jpg',
+        img: {contentType: 'image/jpeg'}
+        // img: fs.readFile('./uploads/')
     },
     {
         title: "Trip Himalaya",
-        desc: "My first day at school was a whirlwind of emotions. I remember feeling a mix of excitement and nervousness as I walked through the gates. The colorful classrooms and cheerful faces of my classmates made me feel welcome. I was introduced to my teacher, who was kind and encouraging. We played games and shared stories, which helped break the ice. Lunchtime was a highlight, as I made new friends and shared snacks. \n\nBy the end of the day, my fears had vanished, and I couldn't wait to return the next day. It was the beginning of a wonderful journey!"
+        desc: "My first day at school was a whirlwind of emotions. I remember feeling a mix of excitement and nervousness as I walked through the gates. The colorful classrooms and cheerful faces of my classmates made me feel welcome. I was introduced to my teacher, who was kind and encouraging. We played games and shared stories, which helped break the ice. Lunchtime was a highlight, as I made new friends and shared snacks. \n\nBy the end of the day, my fears had vanished, and I couldn't wait to return the next day. It was the beginning of a wonderful journey!",
+        Imgfilename: 'Trip to Himalaya.jpg',
+        img: {contentType: 'image/jpeg'}
     }
 ];
 
@@ -79,8 +85,24 @@ app.get('/posts/:postName', (req, res) => {
     
     Blog.findOne({title: postName})
     .then((blogData) => {
-        if(blogData) { res.render('posts', {title: blogData.title, desc: blogData.desc, blogId: blogData.id});
-        } else { console.log('Error!!!!'); res.redirect('/'); }
+        fs.readFile(`./uploads/${blogData.Imgfilename}`, (err, data) => {
+            if (err) {
+                console.log('Error!' + err.message) 
+            } 
+            
+            const base64Image = Buffer.from(data).toString('base64');
+            const imgSrc = `data:image/jpg;base64,${base64Image}`;
+            
+            if(blogData) { 
+                console.log('--------->' + blogData.Imgfilename);
+                res.render('posts', {
+                    title: blogData.title, 
+                    desc: blogData.desc, 
+                    blogId: blogData.id,
+                    blogImg: imgSrc
+                });
+            } else { console.log('Error!!!!' + err); res.redirect('/'); }
+        })
     })
     .catch(err => {console.log(`Error: ${err}`)})
 

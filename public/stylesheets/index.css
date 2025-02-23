@@ -226,7 +226,7 @@ textarea {
 }
 .dots-container {
     position: relative;
-    left: 50%;
+    left: 45%;
     display: inline-block;
 }
 .dot-btn {
@@ -234,14 +234,14 @@ textarea {
     border: none;
     padding: 8px;
     cursor: pointer;
-    border-radius: 50%;
+    border-radius: 20%;
     transition: background-color 0.3s;
 }
-.three-dot-btn:hover {
+.dot-btn:hover {
     background-color: #f0f0f0;
 }
 .dot {
-    width: 2rem;
+    width: 1rem;
     height: 0.3rem;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 1rem;
@@ -282,6 +282,20 @@ textarea {
     background: transparent;
     cursor: pointer;
     width: 100%;
+}
+.image-container {
+    border: 1px solid #4e5753;
+    border-radius: 1rem;
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    padding: 0.5rem;
+    background-position: center;
+    background-size: cover;
+}
+.posts-img {
+    border-radius: 1rem;
+    display: none;
 }
 
 
