@@ -63,6 +63,7 @@
 }
 .front-image {
     position: relative;
+    left: -5%;
 }
 .front-image img {
     height: 500px;
@@ -331,10 +332,66 @@ textarea {
 }
 
 @media (min-width: 350px) and (max-width: 900px) {
-    .front-image img {
-        height: 350px;
+    /* -----------------> Front Page */
+    .front-page {
+        padding-top: 1rem;
     }
-    /* Second Page */
+    .navbar {margin-top: 1rem;}
+    .front-image {margin-bottom: 3rem;}
+    .front-image img {
+        display: none;
+        /* height: 350px; */
+    }
+    .front-image::before {
+        display: none;
+        /* content: "My Story, My Way.";
+        position: absolute;
+        top: 11.6rem;
+        left: -3.7rem;
+        transform: rotate(270deg);
+        opacity: 0.8;
+        z-index: -1; */
+    }
+    .front-text {margin-top: 5rem !important;}
+    .front-text h1 {
+        font-size: 3.6rem;
+    }
+    .front-text::before {
+        /* content: "My Story"; */
+        content: "A";
+        bottom: 11rem;
+        right: 0rem;
+        font-size: 30rem;
+        line-height: 9rem;
+
+    }
+    .front-text::after {
+        /* display: none; */
+        content: "Speech is silver, silence is golden.";
+        /* content: "The best time to plant a seed may have been 20 years ago, but the 2nd best time to do so is now."; */
+        position: absolute;
+        bottom: -9rem;
+        right: 0.4rem;
+        font-size: 2rem;
+        padding: 1rem 1rem;
+        line-height: 36px;
+        width: 94%;
+        /* text-align: left; */
+        /* font-weight: 600; */
+        /* border: 1px solid red; */
+        z-index: -1;
+        font-family: 'anger styles';
+        /* color: gray; */
+        opacity: 0.5;
+    }
+    .btns {margin-top: 2rem !important;}
+    .front-text .btns button:nth-child(2) {margin-top: 0.5rem; border-radius: 0 0 1rem 1rem;}
+    .front-text .btns button:nth-child(1) {margin-top: 0.5rem; border-radius: 1rem 1rem 0 0;}
+    .btns button { width: 10rem !important;}
+
+
+
+    /* ------------------> Second Page */
     .second-page {
         padding: 5% 10% 2%;
         /* padding: 0; */
@@ -342,5 +399,47 @@ textarea {
     .journals {
         display: grid;
         grid-template-columns: 1fr;
+    }
+    .jrnl h2 {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+
+    .input-tags {
+        margin: 9% 8% 16%;
+        display: grid;
+        grid-template-columns: 1fr;
+        column-gap: 2rem;
+        row-gap: 10rem;
+    }
+    .image-filler {height: 160%;}
+    .compose .title {
+        margin-top: 3rem !important;
+    }
+
+    /* ---------- ABOUT & CONTACT */
+    .about-us {
+        position: relative;
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 2rem;
+    }
+    .about {
+        padding: 5% 12% 0;
+    }
+    .about .message {padding: 9% 0;}
+    .about-us .img {width: 100%;}
+    .about-us .message::before {
+        position: absolute;
+        top: 22rem;
+        left: 1rem;
+        font-size: 0;
+        font-weight: bolder;
+        color: rgba(0, 0, 0, 0.3);
+        opacity: 0.5;
+    }
+
+    footer {
+        margin: 7% 3% 0;
     }
 }
