@@ -4,7 +4,6 @@ import multer from 'multer';
 import mongoose from 'mongoose';
 import notifier from 'node-notifier';
 import fs from 'fs';
-// const _ = require('lodash');
 
 const app = express();
 const PORT = 8000;
